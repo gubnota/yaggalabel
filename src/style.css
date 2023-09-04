@@ -1,0 +1,88 @@
+:root {
+    --bleeding: 0cm;
+    --margin: 0cm;
+  }
+  @page {
+    margin: 0;
+    marks: none;
+    bleed:0;
+}  
+
+* {
+    box-sizing: border-box;
+  }
+
+  body,#app {
+    margin: 0 auto;
+    padding: 0;
+    background: rgb(204, 204, 204);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page {
+    display: flex;
+    position: relative;
+    font-size: 12pt;
+    margin: 2em auto;
+    padding: calc(var(--bleeding) + var(--margin));
+    box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+    background: white;
+    flex-direction: column;
+    /* page-break-after: always; */
+  
+  }
+  @media screen {
+    .page::after {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      width: calc(100% - var(--bleeding) * 2);
+      height: calc(100% - var(--bleeding) * 2);
+      margin: var(--bleeding);
+      outline: thin dashed black;
+      pointer-events: none;
+      z-index: 9999;
+    }
+  }
+
+    
+  @media print {
+    body,#app{
+      background:white;
+    }
+  
+    .page {
+      margin: 0;
+      overflow: hidden;
+      box-shadow:none;
+    }
+  }
+
+  svg{flex:1;
+  }
+  canvas.barcode{
+    flex:1;
+      max-width: 95%;
+      max-height: 22mm;
+      /* margin-left: 10px; */
+      align-self:center;
+
+  
+  }
+  .qrcode{
+    flex:1;
+        max-height:80%;
+    align-self:center;
+  }
+  p{text-align:center;
+  font-family:Sans-Serif;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-top:8px;
+  margin:0 7px;
+  font-size:14px;}
+
+  .pagebreak { page-break-after: always; } /* page-break-after works, as well */
+  

@@ -1,0 +1,15 @@
+  @page {
+    size: 60mm 60mm;
+  }
+  .page {
+    height: 60mm;
+    width: 60mm;
+  }
+    
+  canvas.barcode{
+      width: 205px;
+  }
+  p{padding-top:16px;
+  margin:0 12px;
+  font-size:14px;}
+
